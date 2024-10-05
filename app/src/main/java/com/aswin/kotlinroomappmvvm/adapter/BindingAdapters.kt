@@ -3,11 +3,22 @@ package com.aswin.kotlinroomappmvvm.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.aswin.kotlinroomappmvvm.R
+import com.aswin.kotlinroomappmvvm.roomDatabase.Item
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 object BindingAdapters {
+
+    @BindingAdapter("items")
+    @JvmStatic
+    fun setRecyclerViewItems(recyclerView: RecyclerView, items: List<Item>?) {
+        val adapter = recyclerView.adapter as? ItemRecyclerAdapter
+        if (adapter != null && items != null) {
+            adapter.updateItems(items)
+        }
+    }
 
     @JvmStatic
     @BindingAdapter("itemName")

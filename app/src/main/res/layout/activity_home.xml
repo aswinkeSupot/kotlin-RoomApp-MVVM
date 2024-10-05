@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="homeModel"
+            type="com.aswin.kotlinroomappmvvm.activity.home.model.HomeModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -29,6 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:onClick="@{homeModel::goToAddPage}"
                 android:id="@+id/btnAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <androidx.recyclerview.widget.RecyclerView
+                app:items="@{homeModel.items}"
                 android:id="@+id/recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -65,7 +73,8 @@
                 android:layout_height="wrap_content"
                 tools:visibility="visible"
                 android:visibility="invisible"
-                android:text="No Records Found"
+                android:text="@={homeModel.emptyRecordText}"
+                tools:text="No Records Found"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,33 +83,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-        <!--            <ScrollView-->
-        <!--                android:id="@+id/scrollView2"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="0dp"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">-->
-
-        <!--                <TextView-->
-        <!--                    android:id="@+id/tvRecords"-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginLeft="20dp"-->
-        <!--                    android:layout_marginTop="20dp"-->
-        <!--                    android:layout_marginRight="20dp"-->
-        <!--                    android:text="The Database Records"-->
-        <!--                    android:textSize="20sp"-->
-        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                    app:layout_constraintStart_toStartOf="parent"-->
-        <!--                    app:layout_constraintTop_toBottomOf="@+id/btnSave" />-->
-        <!--            </ScrollView>-->
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
