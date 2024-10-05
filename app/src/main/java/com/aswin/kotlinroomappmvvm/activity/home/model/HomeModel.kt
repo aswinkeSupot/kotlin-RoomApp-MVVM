@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aswin.kotlinroomappmvvm.activity.ItemDetailsActivity
 import com.aswin.kotlinroomappmvvm.activity.addItem.view.AddItemActivity
 import com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModel
 import com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModelFactory
@@ -31,11 +32,22 @@ class HomeModel(val binding: ActivityHomeBinding, val activity: FragmentActivity
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
         // Initialize the adapter with an empty list
-        val adapter = ItemRecyclerAdapter(activity, listOf())
+        val adapter = ItemRecyclerAdapter(activity, listOf(), object : ItemRecyclerAdapter.OnItemClickListener {
+            override fun onItemClick(item: Item) {
+                navigateToDetailPage(item)
+            }
+        })
         binding.recyclerView.adapter = adapter
 
         loadData(adapter)
     }
+    // Navigate to DetailActivity, passing the clicked Item
+    private fun navigateToDetailPage(item: Item) {
+        val intent = Intent(activity, ItemDetailsActivity::class.java)
+        intent.putExtra("item", item) // Pass the item as Serializable
+        activity.startActivity(intent)
+    }
+
 
     fun goToAddPage(view: View){
         val intent = Intent(activity, AddItemActivity::class.java)
@@ -52,10 +64,10 @@ class HomeModel(val binding: ActivityHomeBinding, val activity: FragmentActivity
                     binding.tvNoPost.visibility = View.GONE
 
                     for ((index, item) in itemList.withIndex()){
-                        result = result + "${index+1}.  item = ${item.name} \n     price = ${item.price} \n     quantity = ${item.quantity} \n__________________\n"
+                        result += "${index + 1}.  item = ${item.name} \n     price = ${item.price} \n     quantity = ${item.quantity} \n__________________\n"
 
                         var itemval = Item(
-                            0,
+                            item.id,
                             item.name,
                             item.price,
                             item.quantity

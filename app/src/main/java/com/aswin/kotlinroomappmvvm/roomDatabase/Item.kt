@@ -3,6 +3,7 @@ package com.aswin.kotlinroomappmvvm.roomDatabase
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * ROOM DB Details
@@ -23,4 +24,4 @@ data class Item(
     val price : Double,
     @ColumnInfo(name = "item_quantity")
     val quantity : Int
-)
+) : Serializable
