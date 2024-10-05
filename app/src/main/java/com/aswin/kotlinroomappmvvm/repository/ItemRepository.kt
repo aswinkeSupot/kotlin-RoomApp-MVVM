@@ -2,8 +2,8 @@ package com.aswin.kotlinroomappmvvm.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.example.roomdbapp.roomDatabase.Item
-import com.example.roomdbapp.roomDatabase.ItemDatabase
+import com.aswin.kotlinroomappmvvm.roomDatabase.Item
+import com.aswin.kotlinroomappmvvm.roomDatabase.ItemDatabase
 
 /**
  * Created by Aswin on 03-10-2024.

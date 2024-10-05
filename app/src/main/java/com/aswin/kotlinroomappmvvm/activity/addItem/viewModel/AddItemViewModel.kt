@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aswin.kotlinroomappmvvm.repository.ItemRepository
-import com.example.roomdbapp.roomDatabase.Item
+import com.aswin.kotlinroomappmvvm.roomDatabase.Item
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

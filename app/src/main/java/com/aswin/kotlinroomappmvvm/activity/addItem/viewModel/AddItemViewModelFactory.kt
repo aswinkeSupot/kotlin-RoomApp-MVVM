@@ -3,7 +3,6 @@ package com.aswin.kotlinroomappmvvm.activity.addItem.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModel
 
 /**
  * Created by Aswin on 03-10-2024.

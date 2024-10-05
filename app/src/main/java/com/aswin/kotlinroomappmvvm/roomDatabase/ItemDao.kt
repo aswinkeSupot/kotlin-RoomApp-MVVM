@@ -1,4 +1,4 @@
-package com.example.roomdbapp.roomDatabase
+package com.aswin.kotlinroomappmvvm.roomDatabase
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

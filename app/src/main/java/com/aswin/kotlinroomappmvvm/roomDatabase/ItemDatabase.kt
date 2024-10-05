@@ -1,4 +1,4 @@
-package com.example.roomdbapp.roomDatabase
+package com.aswin.kotlinroomappmvvm.roomDatabase
 
 import android.content.Context
 import androidx.room.Database
