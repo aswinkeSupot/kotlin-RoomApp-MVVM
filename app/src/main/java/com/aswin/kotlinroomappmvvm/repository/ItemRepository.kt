@@ -30,4 +30,24 @@ class ItemRepository(context: Context) {
             false // Return false if there was an error
         }
     }
+
+    suspend fun updateItem(item: Item): Boolean {
+        return try {
+            itemDao.updateItem(item)
+            true
+        } catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
+
+    suspend fun deleteItem(item: Item): Boolean {
+        return try {
+            itemDao.deleteItem(item)
+            true
+        } catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
 }

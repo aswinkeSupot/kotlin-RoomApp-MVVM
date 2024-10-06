@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aswin.kotlinroomappmvvm.activity.ItemDetailsActivity
+import com.aswin.kotlinroomappmvvm.activity.itemDetail.view.ItemDetailsActivity
 import com.aswin.kotlinroomappmvvm.activity.addItem.view.AddItemActivity
 import com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModel
 import com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModelFactory

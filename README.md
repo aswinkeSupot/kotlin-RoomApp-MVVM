@@ -1,3 +1,8 @@
+# App ScreenShots
+<img src="img.png" alt="Screenshot" width="300"/>
+<img src="img_2.png" alt="Screenshot" width="300"/>
+<img src="img_3.png" alt="Screenshot" width="300"/>
+
 # 1. Add Dependency
 ### 1. Add dependency for room database in app level build.gradle.kts
 > **Reference URL -** [Room Database Document](https://developer.android.com/jetpack/androidx/releases/room)
