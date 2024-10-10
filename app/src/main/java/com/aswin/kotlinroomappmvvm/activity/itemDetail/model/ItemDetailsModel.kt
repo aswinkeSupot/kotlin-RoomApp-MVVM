@@ -2,14 +2,17 @@ package com.aswin.kotlinroomappmvvm.activity.itemDetail.model
 
 import android.app.Activity
 import android.content.Intent
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.aswin.kotlinroomappmvvm.BR
+import com.aswin.kotlinroomappmvvm.R
 import com.aswin.kotlinroomappmvvm.activity.home.view.HomeActivity
 import com.aswin.kotlinroomappmvvm.activity.itemDetail.viewModle.ItemDetailsViewModel
 import com.aswin.kotlinroomappmvvm.activity.itemDetail.viewModle.ItemDetailsViewModelFactory
@@ -49,6 +52,15 @@ class ItemDetailsModel(val binding: ActivityItemDetailsBinding,val item: Item?, 
         }
 
     init {
+
+        // Set up Toolbar as the ActionBar in the Fragment
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        // Set the ActionBar title to an empty string to remove the app name
+        (activity as AppCompatActivity).supportActionBar?.title = "Detail Page"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // Optional: Customize the icon (uses the default back icon if not set)
+        (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back) // Optional, set your custom icon
+
         val factory = ItemDetailsViewModelFactory(activity)
         itemDetailsViewModel = ViewModelProvider(activity,factory).get(ItemDetailsViewModel::class.java)
 
@@ -65,6 +77,19 @@ class ItemDetailsModel(val binding: ActivityItemDetailsBinding,val item: Item?, 
                 itemDetailsViewModel.doneNavigating()
             }
         })
+    }
+
+    // Handling toolbar menu item clicks
+    fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                // Handle toolbar's back button
+                activity.onBackPressed()
+                return true
+            }
+
+        }
+        return false
     }
 
     fun deleteItem(view: View){

@@ -114,7 +114,8 @@ implementation("androidx.room:room-ktx:$room_version")
 ````
 <img src="img_1.png" alt="Inspection" height="300"/>
 
-[//]: # (![img_1.png]&#40;img_1.png&#41;)
+
+# 3. MVVM
 
 
 

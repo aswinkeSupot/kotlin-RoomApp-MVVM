@@ -21,6 +21,10 @@ class ItemRepository(context: Context) {
         return itemDao.getAllItemsInDB()
     }
 
+    suspend fun getSearchDataFromDB(query: String): LiveData<List<Item>>{
+        return itemDao.searchItem(query)
+    }
+
     suspend fun insertItem(item: Item): Boolean {
         return try {
             itemDao.insertItem(item)
@@ -44,6 +48,16 @@ class ItemRepository(context: Context) {
     suspend fun deleteItem(item: Item): Boolean {
         return try {
             itemDao.deleteItem(item)
+            true
+        } catch (e: Exception){
+            e.printStackTrace()
+            false
+        }
+    }
+
+    suspend fun deleteAllItem(): Boolean {
+        return try {
+            itemDao.deleteAllItem()
             true
         } catch (e: Exception){
             e.printStackTrace()

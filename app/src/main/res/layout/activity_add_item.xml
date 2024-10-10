@@ -6,7 +6,7 @@
     <data>
         <variable
             name="addItemModel"
-            type="com.aswin.kotlinroomappmvvm.activity.addItem.model.AddItemModel" />
+            type="com.aswin.kotlinroomappmvvm.activity.addItem.viewModel.AddItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,18 +15,17 @@
         android:layout_height="match_parent"
         tools:context=".activity.addItem.view.AddItemActivity">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Add Item"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"
+        <!-- Add Toolbar here -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Add Item"
+            app:titleTextColor="@android:color/white" />
 
         <EditText
             android:text="@={addItemModel.itemName}"
@@ -41,7 +40,7 @@
             android:hint="Item Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <EditText
             android:text="@={addItemModel.itemPrice}"
@@ -72,8 +71,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edItemPrice" />
 
+        <!--        android:onClick="@{activity::addItem}"-->
         <Button
-            android:onClick="@{addItemModel::addItem}"
+            android:onClick="@{addItemModel.addItem}"
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,6 +82,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edItemQuantity" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={addItemModel.itemName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

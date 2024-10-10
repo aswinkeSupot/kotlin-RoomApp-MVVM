@@ -52,5 +52,12 @@ interface ItemDao {
 
     // Search with title and body
     @Query("SELECT * FROM item_table WHERE item_name LIKE :query OR  item_price LIKE :query")
-    fun searchNote(query: String?) : LiveData<List<Item>>
+    fun searchItemExactly(query: String?) : LiveData<List<Item>>
+
+    @Query("SELECT * FROM item_table WHERE item_name LIKE '%' || :query || '%' OR item_price LIKE '%' || :query || '%'")
+    fun searchItem(query: String?): LiveData<List<Item>>
+
+//    Query("SELECT * FROM item_table WHERE item_name LIKE '%' || :query || '%' OR item_price LIKE '%' || :query || '%'")
+//    fun searchNote(query: String?) : LiveData<List<Item>>
+
 }
