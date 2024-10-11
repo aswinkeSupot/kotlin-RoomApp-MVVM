@@ -18,21 +18,18 @@ class AddItemActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAddItemBinding
     //    lateinit var addItemModel: AddItemModel
-    lateinit var addItemViewModel: AddItemViewModel
+    lateinit var viewModel: AddItemViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_item)
 
-        val factory = AddItemViewModelFactory(this, binding)
-        addItemViewModel = ViewModelProvider(this, factory).get(AddItemViewModel::class.java)
-
-        binding.addItemModel = addItemViewModel
         // Set lifecycleOwner for data binding
         binding.lifecycleOwner = this
+        val factory = AddItemViewModelFactory(this, binding)
+        viewModel = ViewModelProvider(this, factory).get(AddItemViewModel::class.java)
+        binding.xmlViewModel = viewModel
 
-
-//        binding.activity = addItemViewModel
 
 
         // Set up Toolbar as the ActionBar in the Fragment
@@ -44,15 +41,15 @@ class AddItemActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back) // Optional, set your custom icon
 
         // Observe navigation event
-        addItemViewModel.navigateToHome.observe(this, Observer { shouldNavigate ->
+        viewModel.navigateToHome.observe(this, Observer { shouldNavigate ->
             if (shouldNavigate) {
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
-                addItemViewModel.doneNavigating()
+                viewModel.doneNavigating()
             }
         })
 
-        addItemViewModel.backPressed.observe(this, Observer { backPress ->
+        viewModel.backPressed.observe(this, Observer { backPress ->
             if (backPress == true) {
                 onBackPressed()
             }
@@ -65,6 +62,6 @@ class AddItemActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return addItemViewModel.onOptionsItemSelected(item) || super.onOptionsItemSelected(item)
+        return viewModel.onOptionsItemSelected(item) || super.onOptionsItemSelected(item)
     }
 }

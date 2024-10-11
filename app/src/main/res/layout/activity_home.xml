@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="homeModel"
-            type="com.aswin.kotlinroomappmvvm.activity.home.model.HomeModel" />
+            name="xmlViewModel"
+            type="com.aswin.kotlinroomappmvvm.activity.home.viewModel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <androidx.recyclerview.widget.RecyclerView
-                app:items="@{homeModel.items}"
+                app:items="@{xmlViewModel.items}"
                 android:id="@+id/recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 tools:visibility="visible"
                 android:visibility="invisible"
-                android:text="@={homeModel.emptyRecordText}"
+                android:text="@={xmlViewModel.emptyRecordText}"
                 tools:text="No Records Found"
                 android:textColor="@color/black"
                 android:textSize="20sp"

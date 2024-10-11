@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="itemDetailsModel"
-            type="com.aswin.kotlinroomappmvvm.activity.itemDetail.model.ItemDetailsModel" />
+            name="xmlViewModel"
+            type="com.aswin.kotlinroomappmvvm.activity.itemDetail.viewModle.ItemDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
             app:titleTextColor="@android:color/white" />
 
         <EditText
-            android:text="@={itemDetailsModel.itemName}"
+            android:text="@={xmlViewModel.itemName}"
             android:id="@+id/edItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <EditText
-            android:text="@={itemDetailsModel.itemPrice}"
+            android:text="@={xmlViewModel.itemPrice}"
             android:id="@+id/edItemPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edItemName" />
         <EditText
-            android:text="@={itemDetailsModel.itemQuantity}"
+            android:text="@={xmlViewModel.itemQuantity}"
             android:id="@+id/edItemQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edItemQuantity">
 
             <Button
-                android:onClick="@{itemDetailsModel::updateItem}"
+                android:onClick="@{xmlViewModel::updateItem}"
                 android:id="@+id/btnUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:text="Update"
                 android:layout_marginTop="100dp" />
             <Button
-                android:onClick="@{itemDetailsModel::deleteItem}"
+                android:onClick="@{xmlViewModel::deleteItem}"
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

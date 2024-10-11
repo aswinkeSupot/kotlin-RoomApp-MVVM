@@ -21,8 +21,8 @@ import kotlinx.coroutines.withContext
 /**
  * Created by Aswin on 03-10-2024.
  */
-class AddItemViewModel(context: Context, binding: ActivityAddItemBinding) : ViewModel(),
-    Observable {
+class AddItemViewModel(context: Context, binding: ActivityAddItemBinding) : ViewModel(), Observable {
+
     private val propertyChangeRegistry = PropertyChangeRegistry()
 
     private val repository: ItemRepository = ItemRepository(context.applicationContext)
@@ -63,13 +63,11 @@ class AddItemViewModel(context: Context, binding: ActivityAddItemBinding) : View
                 _backPressed.value = true
                 return true
             }
-
         }
         return false
     }
 
     fun addItem(view: View) {
-
         if (itemName.isNotEmpty() && itemPrice.isNotEmpty() && itemQuantity.isNotEmpty()) {
             val item = Item(0, itemName, itemPrice.toDouble(), itemQuantity.toInt())
             viewModelScope.launch(Dispatchers.IO) {
